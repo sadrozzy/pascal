@@ -1,0 +1,27 @@
+procedure Forml.button1_Click (sender: Object; e: EventArgs) ;
+const a: array [1..10] of integer = (10, 14, 22, 75, 63, 12, 37, 61, 42, 48) ;
+n = 10;
+var max, x, yl, y2, h, i, cr, cg, cb: integer;
+m: real;
+gr: Graphics; rnd: Random; sb: SolidBrush;
+begin
+max:= a [1];
+for i: = 2 ton do
+if a[i]>max then max:= a[il;
+h:=trunc (PictureBox1.Width/ (2*n+1));
+m: = PictureBox1.Height / max;
+x:= h;
+//подготовка графической области //для рисования примитивов
+gr:=PictureBox1.CreateGraphics;
+gr.Clear (Color.White);
+rnd : = new Random () ;
+for i : = 1 ton do
+begin
+cr : = rnd.next (256) ;
+cg:= rnd.next (256);
+cb : = rnd.next (256) ;
+sb: = new SolidBrush (Color.FromArgb
+(cr, cg, cb)) ;
+y1 :=PictureBoxl.Height-1; y2 := y1-trunc (a [i] * m) -1; gr.FillRectangle (sb, x, y2, h, y1);
+x := x+ 2 * h;
+end; end;
